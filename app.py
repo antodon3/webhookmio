@@ -6,17 +6,7 @@ log = app.logger
 
 @app.route('/', methods=['POST'])
 def webhook():
-    """This method handles the http requests for the Dialogflow webhook
-    This is meant to be used in conjunction with the weather Dialogflow agent
-    """
-    req = request.get_json(silent=True, force=True)
-    parameters = req['queryResult']['parameters']
-    text = parameters['text']
-
-    print(parameters)
-
     risposta = "ciao"
-    print('Response: ' + risposta)
 
     return make_response(jsonify({'fulfillmentText': risposta}))
 
