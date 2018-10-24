@@ -3,7 +3,7 @@ from flask import Flask, request, make_response, jsonify
 app = Flask(__name__)
 
 
-@app.route("/webhook", methods=['POST'])
+@app.route("/", methods=['POST'])
 def webhook():
     Req = request.get_json(silent=True, force=True)
     risposta = 'ciao'
