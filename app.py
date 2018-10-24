@@ -1,13 +1,13 @@
 from flask import Flask, request, make_response, jsonify
 
 app = Flask(__name__)
-log = app.logger
 
 
-@app.route('/', methods=['POST'])
+@app.route("/webhook", methods=['POST'])
 def webhook():
-    risposta = "ciao"
-
+    Req = request.get_json(silent=True, force=True)
+    risposta = 'ciao'
+    
     return make_response(jsonify({'fulfillmentText': risposta}))
 
 
