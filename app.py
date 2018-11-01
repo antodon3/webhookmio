@@ -3,15 +3,14 @@ from flask import Flask, request, make_response, jsonify
 app = Flask(__name__)
 
 
-@app.route("/", methods=['POST'])
+# create a route for webhook
+@app.route('/webhook', methods=['GET', 'POST'])
 def webhook():
-    Req = request.get_json(silent=True, force=True)
+    req = request.get_json(force=True)
+    action = req.get('queryResult').get('action')
     risposta = 'ciao'
     
-    #return make_response(jsonify({'fulfillmentText': risposta}))
-    return make_response(jsonify({"speech": "Hello!",
-    "displayText": "Hello!"
-    }))
+    return make_response(jsonify({'fulfillmentText': risposta}))
     
 
 if __name__ == '__main__':
