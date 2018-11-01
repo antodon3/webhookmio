@@ -2,6 +2,10 @@ from flask import Flask, request, make_response, jsonify
 
 app = Flask(__name__)
 
+# default route
+@app.route('/)
+def index():
+    return 'Hello World!'
 
 # create a route for webhook
 @app.route('/webhook', methods=['GET', 'POST'])
@@ -15,3 +19,4 @@ def webhook():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
+
